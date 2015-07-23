@@ -9,6 +9,7 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/artoa/Public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/artoa/Public/css/swiper.min.css">
     <link rel="stylesheet" href="/artoa/Public/css/common.css">
     <link rel="stylesheet" href="/artoa/Public/css/home.css">
 	
@@ -26,15 +27,20 @@
 	
 	<div class="container">
 		
+		<div class="slider">
+			
+		</div>
+
+		
+	
+
 	</div>
-
-
-
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/artoa/Public/js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/artoa/Public/js/bootstrap.min.js"></script>
+    <script src="/artoa/Public/js/swiper.min.js"></script>
     <script src="/artoa/Public/js/common.js"></script>
   </body>
 </html>
