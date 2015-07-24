@@ -41,7 +41,7 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-6 col-sm-offset-3">
+			<div class="col-md-6 col-md-offset-3">
 				<div class="login panel panel-default">
 					<div class="panel-heading sh">员工登陆</div>
 					<div class="panel-body">
@@ -55,21 +55,21 @@
 							<input type="hidden" name="_token" value="">
 
 							<div class="form-group">
-								<label class="col-sm-3 control-label">用户名：</label>
-								<div class="col-sm-7">
+								<label class="col-md-3 control-label">用户名：</label>
+								<div class="col-md-7">
 									<input type="name" placeholder="name" class="form-control" name="name">
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label class="col-sm-3 control-label">密码：</label>
-								<div class="col-sm-7">
+								<label class="col-md-3 control-label">密码：</label>
+								<div class="col-md-7">
 									<input type="password" placeholder="password" class="form-control" name="password">
 								</div>
 							</div>
 
 							<div class="form-group">
-								<div class="col-sm-7 col-sm-offset-3">
+								<div class="col-md-7 col-md-offset-3">
 									<div class="checkbox">
 										<label>
 											<input type="checkbox" name="remember"> 记住我
@@ -79,10 +79,10 @@
 							</div>
 
 							<div class="form-group">
-								<div class="col-sm-7 col-sm-offset-3">
+								<div class="col-md-7 col-md-offset-3">
 									<button type="submit" class="btn btn-primary">登陆</button>
 
-									<a class="btn btn-link" href="{{ url('/password/email') }}">新员工注册</a>
+									<a class="btn btn-link" href="">新员工注册</a>
 								</div>
 							</div>
 						</form>

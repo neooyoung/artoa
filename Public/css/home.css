@@ -19,3 +19,23 @@
 .panel-default>.panel-heading{
 	color: #aaa;
 }
+.t-nav{
+	margin: 10px 0;
+}
+.t-nav td{
+	line-height: 35px !important;
+}
+.dropdown-menu{
+	min-width: 80px;
+}
+.countdown{
+	font-size: 16px;
+	text-align: center;
+}
+.search{
+	display: inline-block;
+}
+.sub-nav{
+	font-size: 16px;
+	text-align: center;
+}
