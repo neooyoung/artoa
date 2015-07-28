@@ -23,6 +23,7 @@
     
 
 
+
     <nav class="nav-t navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -32,33 +33,29 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Brand</a>
+          <a class="navbar-brand" href="#">后台管理</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
-          <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p>
+          <!-- <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Mark Otto</a></p> -->
+          <a class="navbar-text navbar-right" href="<?php echo U('login/signout');?>">退出</a>
         </div>
       </div>
     </nav>
     
-    <div class="nav-l">
-        <ul>
-            <li><a href="">11</a></li>
-            <li><a href="">11</a></li>
-            <li><a href="">11</a></li>
-        </ul>
-    </div>
-
-   
+    
+      <div class="nav-l">
+            <div class="list-group">
+              <a href="<?php echo U('user/index');?>" target="menuFrame" class="list-group-item active">用户管理</a>
+              <a href="<?php echo U('user/add_user');?>" target="menuFrame" class="list-group-item">添加用户</a>
+              <a href="<?php echo U('user/index');?>" target="menuFrame" class="list-group-item">用户管理</a>
+              <a href="<?php echo U('user/index');?>" target="menuFrame" class="list-group-item">用户管理</a>
+              <a href="<?php echo U('user/index');?>" target="menuFrame" class="list-group-item">用户管理</a>
+            </div>
+      </div>
+    
     <div class="main-con">
-        <div>
-             <iframe id="menuFrame" name="menuFrame" src="<?php echo U('admin/index/main');?>" style="overflow:visible;" scrolling="yes" frameborder="1" height="100%" width="100%"></iframe>
-        </div>
+        <iframe name="menuFrame" src="<?php echo U('user/index');?>" style="overflow:visible;" scrolling="yes" frameborder="0" height="100%" width="100%"></iframe>
     </div>
-           
-        
-   
-        
-
    
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/artoa/Public/js/jquery.min.js"></script>

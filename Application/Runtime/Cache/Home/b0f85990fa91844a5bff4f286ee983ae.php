@@ -38,20 +38,24 @@
   </div>
 
 
-
+	
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<div class="login panel panel-default">
-					<div class="panel-heading sh">员工登陆</div>
+					<div class="panel-heading sh">员工注册</div>
 					<div class="panel-body">
-							<!-- <div class="alert alert-danger">
-								<strong>Whoops!</strong> There were some problems with your input.<br><br>
-								<ul>
+						<?php if ($error): ?>
+							<div class="alert alert-danger">
+								<?php echo ($error); ?>
+								<!-- <strong>Whoops!</strong> There were some problems with your input.<br><br> -->
+								<!-- <ul>
 										<li>333</li>
-								</ul>
-							</div> -->
-						<form class="form-horizontal" role="form" method="POST" action="<?php echo U('home/login/login_handler');?>">
+								</ul> -->
+							</div>
+						<?php endif; ?>
+							
+						<form class="form-horizontal" role="form" method="POST" action="<?php echo U('home/login/signup_handler');?>">
 							<input type="hidden" name="_token" value="">
 
 							<div class="form-group">
@@ -69,20 +73,15 @@
 							</div>
 
 							<div class="form-group">
-								<div class="col-md-7 col-md-offset-3">
-									<div class="checkbox">
-										<label>
-											<input type="checkbox" name="remember"> 记住我
-										</label>
-									</div>
+								<label class="col-md-3 control-label">确认密码：</label>
+								<div class="col-md-7">
+									<input type="password" placeholder="password" class="form-control" name="repassword">
 								</div>
 							</div>
 
 							<div class="form-group">
 								<div class="col-md-7 col-md-offset-3">
-									<button type="submit" class="btn btn-primary">登陆</button>
-
-									<a class="btn btn-link" href="<?php echo U('home/login/signup');?>">新员工注册</a>
+									<button type="submit" class="btn btn-primary">提交</button>
 								</div>
 							</div>
 						</form>

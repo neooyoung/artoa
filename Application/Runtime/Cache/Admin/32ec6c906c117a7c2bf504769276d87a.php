@@ -9,9 +9,8 @@
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="/artoa/Public/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/artoa/Public/css/swiper.min.css">
     <link rel="stylesheet" href="/artoa/Public/css/common.css">
-    <link rel="stylesheet" href="/artoa/Public/css/home.css">
+    <link rel="stylesheet" href="/artoa/Public/css/admin.css">
 	
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,21 +20,7 @@
     <![endif]-->
   </head>
   <body>
-    <div class="container" style="padding-left: 0;padding-right: 0">
-    <div class="swiper-container slider">
-      <div class="swiper-wrapper">
-          <div class="swiper-slide" style="background:url(/artoa/Public/img/slider1.jpg) no-repeat center top; background-size: cover"></div>
-          <div class="swiper-slide" style="background:url(/artoa/Public/img/slider2.jpg) no-repeat center top; background-size: cover"></div>
-          <div class="swiper-slide" style="background:url(/artoa/Public/img/slider3.jpg) no-repeat center top; background-size: cover"></div>
-      </div>
-      <!-- 如果需要分页器 -->
-      <div class="swiper-pagination swiper-pagination-white"></div>
-      
-      <!-- 如果需要导航按钮 -->
-      <!-- <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div> -->
-    </div>
-  </div>
+    
 
 
 
@@ -43,7 +28,7 @@
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<div class="login panel panel-default">
-					<div class="panel-heading sh">员工登陆</div>
+					<div class="panel-heading sh">管理员登陆</div>
 					<div class="panel-body">
 							<!-- <div class="alert alert-danger">
 								<strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -51,7 +36,7 @@
 										<li>333</li>
 								</ul>
 							</div> -->
-						<form class="form-horizontal" role="form" method="POST" action="<?php echo U('home/login/login_handler');?>">
+						<form class="form-horizontal" role="form" method="POST" action="<?php echo U('admin/login/login_handler');?>">
 							<input type="hidden" name="_token" value="">
 
 							<div class="form-group">
@@ -81,8 +66,6 @@
 							<div class="form-group">
 								<div class="col-md-7 col-md-offset-3">
 									<button type="submit" class="btn btn-primary">登陆</button>
-
-									<a class="btn btn-link" href="<?php echo U('home/login/signup');?>">新员工注册</a>
 								</div>
 							</div>
 						</form>
@@ -96,7 +79,6 @@
     <script src="/artoa/Public/js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/artoa/Public/js/bootstrap.min.js"></script>
-    <script src="/artoa/Public/js/swiper.min.js"></script>
-    <script src="/artoa/Public/js/common.js"></script>
+    <script src="/artoa/Public/js/admin.js"></script>
   </body>
 </html>
