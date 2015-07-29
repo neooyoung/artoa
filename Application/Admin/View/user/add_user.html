@@ -42,6 +42,35 @@
 				</div>
 			</div>
 
+			<div class="area form-group">
+				<label class="col-sm-2 control-label">地区：</label>
+				<div class="col-sm-3">
+					<select class="form-control" name="area">
+						<?php foreach ($area as $v): ?>
+							<option value={$v.id}>{$v.name}</option>
+						<?php endforeach; ?>
+					</select>
+				</div>
+			</div>
+
+			<div class="depart form-group">
+				<label class="col-sm-2 control-label">部门：</label>
+				<div class="col-sm-3">
+					<select class="form-control" name="depart">
+						
+					</select>
+				</div>
+			</div>
+
+			<div class="team form-group">
+				<label class="col-sm-2 control-label">小组：</label>
+				<div class="col-sm-3">
+					<select class="form-control" name="team">
+						
+					</select>
+				</div>
+			</div>
+
 			<div class="form-group">
 				<div class="col-sm-3 col-sm-offset-2">
 					<button type="submit" class="btn btn-primary">添加</button>

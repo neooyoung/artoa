@@ -47,7 +47,7 @@
             <div class="list-group">
               <a href="<?php echo U('user/index');?>" target="menuFrame" class="list-group-item active">用户管理</a>
               <a href="<?php echo U('user/add_user');?>" target="menuFrame" class="list-group-item">添加用户</a>
-              <a href="<?php echo U('user/index');?>" target="menuFrame" class="list-group-item">用户管理</a>
+              <a href="<?php echo U('depart/index');?>" target="menuFrame" class="list-group-item">组织部门</a>
               <a href="<?php echo U('user/index');?>" target="menuFrame" class="list-group-item">用户管理</a>
               <a href="<?php echo U('user/index');?>" target="menuFrame" class="list-group-item">用户管理</a>
             </div>
@@ -62,5 +62,38 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/artoa/Public/js/bootstrap.min.js"></script>
     <script src="/artoa/Public/js/admin.js"></script>
+    <script type="text/javascript">
+	    $(function(){
+	    	$(".area select").change(function(){
+				var aid = $(this).val();
+				$.post("<?php echo U('user/add_user_ajax');?>", {area:aid}, function(data){
+					var str = ' ';
+					for (var i in data)
+					{
+						str += "<option value='"+data[i]['id']+"'>"+data[i]['name']+"</option>";
+					}
+
+					$(".depart select").html(str);
+					$(".depart select").change();
+				})
+			})
+
+			$(".depart select").change(function(){
+				var aid = $(this).val();
+				$.post("<?php echo U('user/add_user_ajax');?>", {depart:aid}, function(data){
+					var str = ' ';
+					for (var i in data)
+					{
+						str += "<option value='"+data[i]['id']+"'>"+data[i]['name']+"</option>";
+					}
+
+					$(".team select").html(str);
+				})
+			})
+
+			$(".area select").change();
+
+	    })
+    </script>
   </body>
 </html>

@@ -66,6 +66,35 @@
 				</div>
 			</div>
 
+			<div class="area form-group">
+				<label class="col-sm-2 control-label">地区：</label>
+				<div class="col-sm-3">
+					<select class="form-control" name="area">
+						<?php foreach ($area as $v): ?>
+							<option value=<?php echo ($v["id"]); ?>><?php echo ($v["name"]); ?></option>
+						<?php endforeach; ?>
+					</select>
+				</div>
+			</div>
+
+			<div class="depart form-group">
+				<label class="col-sm-2 control-label">部门：</label>
+				<div class="col-sm-3">
+					<select class="form-control" name="depart">
+						
+					</select>
+				</div>
+			</div>
+
+			<div class="team form-group">
+				<label class="col-sm-2 control-label">小组：</label>
+				<div class="col-sm-3">
+					<select class="form-control" name="team">
+						
+					</select>
+				</div>
+			</div>
+
 			<div class="form-group">
 				<div class="col-sm-3 col-sm-offset-2">
 					<button type="submit" class="btn btn-primary">添加</button>
@@ -78,5 +107,38 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/artoa/Public/js/bootstrap.min.js"></script>
     <script src="/artoa/Public/js/admin.js"></script>
+    <script type="text/javascript">
+	    $(function(){
+	    	$(".area select").change(function(){
+				var aid = $(this).val();
+				$.post("<?php echo U('user/add_user_ajax');?>", {area:aid}, function(data){
+					var str = ' ';
+					for (var i in data)
+					{
+						str += "<option value='"+data[i]['id']+"'>"+data[i]['name']+"</option>";
+					}
+
+					$(".depart select").html(str);
+					$(".depart select").change();
+				})
+			})
+
+			$(".depart select").change(function(){
+				var aid = $(this).val();
+				$.post("<?php echo U('user/add_user_ajax');?>", {depart:aid}, function(data){
+					var str = ' ';
+					for (var i in data)
+					{
+						str += "<option value='"+data[i]['id']+"'>"+data[i]['name']+"</option>";
+					}
+
+					$(".team select").html(str);
+				})
+			})
+
+			$(".area select").change();
+
+	    })
+    </script>
   </body>
 </html>

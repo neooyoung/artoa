@@ -16,6 +16,9 @@ class UserController extends AuthController{
     public function add_user()
     {
         $this->admin = session("admin");
+
+        $this->area = M("depart")->where("pid=0")->select();
+
     	$this->display();
     }
 
@@ -49,11 +52,9 @@ class UserController extends AuthController{
 
     public function update_user_handler()
     {
-
         $data = array(
             "admin" => I("admin")
             );
-
         if (I("password")) $data["password"] = md5(I("password"));
 
         M("users")->where("uid=".I("get.uid"))->save($data);
@@ -66,4 +67,17 @@ class UserController extends AuthController{
     	$this->redirect("user/index");
     }
 
+    public function add_user_ajax()
+    {
+        if (I("area")) 
+        {
+            $res = M("depart")->where("pid=".I("area"))->select();
+            $this->ajaxReturn($res);
+        }
+        else if(I("depart"))
+        {
+            $res = M("depart")->where("pid=".I("depart"))->select();
+            $this->ajaxReturn($res);
+        }
+    }
 }

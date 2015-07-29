@@ -1,0 +1,16 @@
+<include file="public:header"/>
+	<table class="table table-hover">
+		<tr>
+			<th><a href="{:U('depart/add_team', array('pid'=>$pid, 'topid'=>$topid))}">添加小组</a></th>
+		</tr>
+		<?php foreach ($team as $v): ?>
+			<tr>
+				<td>
+					{$v['name']}
+					<a href="{:U('depart/update_team', array('id'=>$v['id']))}">[修改]</a>
+					<a href="{:U('depart/del_team', array('id'=>$v['id']))}">[删除]</a>
+				</td>
+			</tr>
+		<?php endforeach; ?>
+	</table>
+<include file="public:footer"/>

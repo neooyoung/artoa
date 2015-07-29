@@ -33,35 +33,13 @@
 				</ul> -->
 			</div>
 		<?php endif; ?>
-		<form class="form-horizontal" role="form" method="POST" action="<?php echo U('user/update_user_handler',array('uid'=>$user['uid']));?>">
+		<form class="form-horizontal" role="form" method="POST" action="<?php echo U('depart/update_team_handler', array('id'=>$team['id']));?>">
 			<input type="hidden" name="_token" value="">
 
 			<div class="form-group">
-			<label class="col-sm-2 control-label">用户名：</label>
+			<label class="col-sm-2 control-label">小组名称：</label>
 				<div class="col-sm-3">
-					<p class="form-control-static"><?php echo ($user["name"]); ?></p>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-2 control-label">密码：</label>
-				<div class="col-sm-3">
-					<input type="password" placeholder="password" class="form-control" name="password">
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label class="col-sm-2 control-label">用户组：</label>
-				<div class="col-sm-3">
-					<select class="form-control" name="admin">
-					 <?php if ($admin == 2): ?>
-						<option value="0">普通员工</option>
-						<option value="1">管理员</option>
-						<option value="2">总管理员</option>
-					<?php else: ?>
-						<option value="0">普通员工</option>
-						<option value="1">管理员</option>
-					<?php endif; ?>
-					</select>
+					<input type="name" placeholder="area" class="form-control" name="team" value=<?php echo ($team["name"]); ?>>
 				</div>
 			</div>
 

@@ -30,7 +30,7 @@ class LoginController extends Controller {
 
     public function signup_handler()
     {
-        if (empty(I("name"))) 
+        if (strlen(I("name")) == 0) 
         {
             $this->error = "用户名不能为空";
             $this->display("signup");
@@ -62,6 +62,7 @@ class LoginController extends Controller {
                 );
 
                 M("users")->add($data);
+                $this->redirect('index/index');
             }
         }
 

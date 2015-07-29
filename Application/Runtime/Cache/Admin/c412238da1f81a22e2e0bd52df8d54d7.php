@@ -23,55 +23,20 @@
     
 
 
-	<div class="add-user row">
-		<?php if ($error): ?>
-			<div class="alert alert-danger">
-				<?php echo ($error); ?>
-				<!-- <strong>Whoops!</strong> There were some problems with your input.<br><br> -->
-				<!-- <ul>
-						<li>333</li>
-				</ul> -->
-			</div>
-		<?php endif; ?>
-		<form class="form-horizontal" role="form" method="POST" action="<?php echo U('user/update_user_handler',array('uid'=>$user['uid']));?>">
-			<input type="hidden" name="_token" value="">
-
-			<div class="form-group">
-			<label class="col-sm-2 control-label">用户名：</label>
-				<div class="col-sm-3">
-					<p class="form-control-static"><?php echo ($user["name"]); ?></p>
-				</div>
-			</div>
-			<div class="form-group">
-				<label class="col-sm-2 control-label">密码：</label>
-				<div class="col-sm-3">
-					<input type="password" placeholder="password" class="form-control" name="password">
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label class="col-sm-2 control-label">用户组：</label>
-				<div class="col-sm-3">
-					<select class="form-control" name="admin">
-					 <?php if ($admin == 2): ?>
-						<option value="0">普通员工</option>
-						<option value="1">管理员</option>
-						<option value="2">总管理员</option>
-					<?php else: ?>
-						<option value="0">普通员工</option>
-						<option value="1">管理员</option>
-					<?php endif; ?>
-					</select>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<div class="col-sm-3 col-sm-offset-2">
-					<button type="submit" class="btn btn-primary">修改</button>
-				</div>
-			</div>
-		</form>
-	</div>
+	<table class="table table-hover">
+		<tr>
+			<th><a href="<?php echo U('depart/add_team', array('pid'=>$pid, 'topid'=>$topid));?>">添加小组</a></th>
+		</tr>
+		<?php foreach ($team as $v): ?>
+			<tr>
+				<td>
+					<?php echo ($v['name']); ?>
+					<a href="<?php echo U('depart/update_team', array('id'=>$v['id']));?>">[修改]</a>
+					<a href="<?php echo U('depart/del_team', array('id'=>$v['id']));?>">[删除]</a>
+				</td>
+			</tr>
+		<?php endforeach; ?>
+	</table>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/artoa/Public/js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

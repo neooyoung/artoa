@@ -1,0 +1,30 @@
+<include file="public:header"/>
+	<table class="table table-hover">
+		<tr>
+		<th><a href="{:U('depart/add_area')}">添加地区</a></th>
+		</tr>
+		<?php foreach ($area as $v): ?>
+			<tr>
+				<th>
+					{$v['name']}
+					<a href="{:U('depart/update_area', array('id'=>$v['id']))}">[修改]</a>
+					<a href="{:U('depart/del_area', array('id'=>$v['id']))}">[删除]</a>
+					<a href="{:U('depart/add_depart', array('id'=>$v['id']))}">[添加部门]</a>
+				</th>
+			</tr>
+			<?php if ($v['child']): ?>
+				<tr>
+					<td>
+						<?php foreach ($v['child'] as $val): ?>
+							{$val.name}
+							<a href="{:U('depart/update_depart', array('id'=>$val['id']))}">[修改]</a>
+							<a href="{:U('depart/del_depart', array('id'=>$val['id']))}">[删除]</a>
+							<a href="{:U('depart/manage_team', array('pid'=>$val['id'], 'topid'=>$val['topid']))}">[管理小组]</a>
+							&nbsp;
+						<?php endforeach; ?>
+					</td>
+				</tr>
+			<?php endif; ?>
+		<?php endforeach; ?>
+	</table>
+<include file="public:footer"/>
