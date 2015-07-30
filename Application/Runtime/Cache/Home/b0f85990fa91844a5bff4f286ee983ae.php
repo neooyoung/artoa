@@ -79,6 +79,35 @@
 								</div>
 							</div>
 
+							<div class="area form-group">
+								<label class="col-md-3 control-label">地区：</label>
+								<div class="col-md-7">
+									<select class="form-control" name="area">
+										<?php foreach ($area as $v): ?>
+											<option value=<?php echo ($v["id"]); ?>><?php echo ($v["name"]); ?></option>
+										<?php endforeach; ?>
+									</select>
+								</div>
+							</div>
+
+							<div class="depart form-group">
+								<label class="col-md-3 control-label">部门：</label>
+								<div class="col-md-7">
+									<select class="form-control" name="depart">
+										
+									</select>
+								</div>
+							</div>
+
+							<div class="team form-group">
+								<label class="col-md-3 control-label">小组：</label>
+								<div class="col-md-7">
+									<select class="form-control" name="team">
+										
+									</select>
+								</div>
+							</div>
+
 							<div class="form-group">
 								<div class="col-md-7 col-md-offset-3">
 									<button type="submit" class="btn btn-primary">提交</button>
@@ -97,5 +126,39 @@
     <script src="/artoa/Public/js/bootstrap.min.js"></script>
     <script src="/artoa/Public/js/swiper.min.js"></script>
     <script src="/artoa/Public/js/common.js"></script>
+    <script>
+
+    	$(".area select").change(function(){
+				var aid = $(this).val();
+				$.post("<?php echo U('login/signup_ajax');?>", {area:aid}, function(data){
+					var str = ' ';
+					for (var i in data)
+					{
+						str += "<option value='"+data[i]['id']+"'>"+data[i]['name']+"</option>";
+					}
+
+					$(".depart select").html(str);
+					$(".depart select").change();
+				})
+			})
+
+			$(".depart select").change(function(){
+				var aid = $(this).val();
+				$.post("<?php echo U('login/signup_ajax');?>", {depart:aid}, function(data){
+					var str = ' ';
+					for (var i in data)
+					{
+						str += "<option value='"+data[i]['id']+"'>"+data[i]['name']+"</option>";
+					}
+
+					$(".team select").html(str);
+
+				})
+			})
+
+			$(".area select").change();
+
+	   
+    </script>
   </body>
 </html>

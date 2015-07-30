@@ -5,6 +5,7 @@ class IndexController extends Controller {
     public function index(){
     	if (session("uid") && session("name")) 
     	{
+            session_destroy();
     		$this->display();
     	}
     	else

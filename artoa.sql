@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 2015-07-29 11:23:55
+-- Generation Time: 2015-07-30 01:27:36
 -- 服务器版本： 5.6.17
 -- PHP Version: 5.5.12
 
@@ -75,16 +75,19 @@ CREATE TABLE IF NOT EXISTS `artoa_users` (
   `dateline` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`uid`),
   UNIQUE KEY `username` (`name`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
 
 --
 -- 转存表中的数据 `artoa_users`
 --
 
 INSERT INTO `artoa_users` (`uid`, `aid`, `did`, `tid`, `name`, `admin`, `password`, `dateline`) VALUES
-(4, 0, 0, 0, '321', 2, '3d186804534370c3c817db0563f0e461', '2015-07-28 02:30:35'),
-(5, 0, 0, 0, '123', 0, '4297f44b13955235245b2497399d7a93', '2015-07-28 07:07:54'),
-(9, 0, 0, 0, '123123', 0, 'd41d8cd98f00b204e9800998ecf8427e', '2015-07-28 08:48:12');
+(4, 2, 4, 8, '321', 2, '3d186804534370c3c817db0563f0e461', '2015-07-28 02:30:35'),
+(5, 0, 0, 0, '123', 1, '4297f44b13955235245b2497399d7a93', '2015-07-28 07:07:54'),
+(9, 0, 0, 0, '123123', 0, 'd41d8cd98f00b204e9800998ecf8427e', '2015-07-28 08:48:12'),
+(13, 2, 4, 7, 'aaa', 0, '3d186804534370c3c817db0563f0e461', '2015-07-29 12:34:02'),
+(14, 1, 4, 8, 'test', 0, '3d186804534370c3c817db0563f0e461', '2015-07-29 23:03:47'),
+(15, 1, 4, 8, 'fff', 0, '4297f44b13955235245b2497399d7a93', '2015-07-29 23:16:49');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

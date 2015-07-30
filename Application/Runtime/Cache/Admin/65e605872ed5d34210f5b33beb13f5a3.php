@@ -38,8 +38,13 @@
 				<td><?php echo ($v["admin"]); ?></td>
 				<td><?php echo ($v["dateline"]); ?></td>
 				<td>
-				<a href="<?php echo U('user/update_user', array('uid'=>$v['uid']));?>">修改</a>
-				<a href="<?php echo U('user/del_user', array('uid'=>$v['uid']));?>">删除</a>
+				<?php if ($v['admin'] == 9): ?>
+					<a href="<?php echo U('user/approve_user', array('uid'=>$v['uid']));?>">同意申请</a>
+					<a href="<?php echo U('user/deny_user', array('uid'=>$v['uid']));?>">拒绝申请</a>
+				<?php else: ?>
+					<a href="<?php echo U('user/update_user', array('uid'=>$v['uid']));?>">修改</a>
+					<a href="<?php echo U('user/del_user', array('uid'=>$v['uid']));?>">删除</a>
+				<?php endif; ?>
 				</td>
 			</tr><?php endforeach; endif; ?>
 	</tbody>
@@ -55,10 +60,15 @@
     <script src="/artoa/Public/js/admin.js"></script>
     <script type="text/javascript">
 	    $(function(){
+	    	$(".year").val(<?php echo ($year); ?>);;
+	    	$(".month").val(<?php echo ($month); ?>);	
+
+	    	$(".admin select").val(<?php echo ($user['admin']); ?>);
+
 	    	$(".area select").change(function(){
 				var aid = $(this).val();
 				$.post("<?php echo U('user/add_user_ajax');?>", {area:aid}, function(data){
-					var str = ' ';
+					var str = "<option value='0'>全部</option>";
 					for (var i in data)
 					{
 						str += "<option value='"+data[i]['id']+"'>"+data[i]['name']+"</option>";
@@ -67,24 +77,86 @@
 					$(".depart select").html(str);
 					$(".depart select").change();
 				})
+
+				score();
 			})
 
 			$(".depart select").change(function(){
 				var aid = $(this).val();
 				$.post("<?php echo U('user/add_user_ajax');?>", {depart:aid}, function(data){
-					var str = ' ';
+					var str = "<option value='0'>全部</option>";
 					for (var i in data)
 					{
 						str += "<option value='"+data[i]['id']+"'>"+data[i]['name']+"</option>";
 					}
 
 					$(".team select").html(str);
+
+					init();
+					score();
+					// $(".area select").val(<?php echo ($user['aid']); ?>);
+			  //   	$(".depart select").val(<?php echo ($user['did']); ?>);
+			  //   	$(".depart select").val(<?php echo ($user['tid']); ?>);
+
 				})
 			})
 
+
+			$(".score select").change(function(){
+				score();
+			});
+
 			$(".area select").change();
 
+			$(".submit").click(function(){
+				$("#score-f").submit();
+			});
+
 	    })
+
+	    var flag = 1;
+
+	    function init(){
+	    	if (flag == 1) 
+	    	{
+	    		$(".area select").val(<?php echo ($user['aid']); ?>);
+		    	$(".depart select").val(<?php echo ($user['did']); ?>);
+		    	$(".team select").val(<?php echo ($user['tid']); ?>);
+	    	};
+	    	flag = 0;
+	    }
+
+	    function score(){
+	    	var ye = $(".year").val();
+				var mon = $(".month").val();
+				var area = $(".area select").val();
+				var depart = $(".depart select").val();
+				var team = $(".team select").val();
+				$.post("<?php echo U('score/score_ajax');?>", {year:ye,month:mon,aid:area,did:depart,tid:team}, function(data){
+					var str = "<input type='hidden' name='year' value='"+ye+"'/><input type='hidden' name='month' value='"+mon+"'/>";
+					for (var i in data)
+					{
+						str += "<tr><td>"+data[i]['name']+"</td>";
+
+						for (var j = 1; j < 8; j++) {
+							str += "<td><input name='col"+data[i]['uid']+"[]' type='number' min='0' value='"+data[i]['child']['col'+j]+"'/></td>";
+						};
+
+						str += "<td><input type='text' name='col"+data[i]['uid']+"[]' value='"+data[i]['child']['total']+"'/></td></tr>";
+					}
+					$(".score .scorelist").html(str);
+
+					$(".score td input").change(function(){
+						// 总分计算
+						var index = $(this).parent().parent().find('td');
+						
+						var t = index.eq(1).find('input').val()*5+index.eq(2).find('input').val()*4+index.eq(3).find('input').val()*3+index.eq(4).find('input').val()*2.5+index.eq(5).find('input').val()*2+index.eq(6).find('input').val()*1-index.eq(7).find('input').val()*5;
+
+						index.eq(8).find('input').val(t);
+					})
+				})
+	    }
+
     </script>
   </body>
 </html>

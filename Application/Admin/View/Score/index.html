@@ -1,0 +1,106 @@
+<include file="public/header"/>
+
+
+	<div class="">
+		<table class="score t-nav table table-bordered">
+			<tbody>
+				<tr>
+					<td>
+						<label>日期：</label>
+						<select class="year">
+							<option value="2015">2015年</option>
+							<option value="2016">2016年</option>
+							<option value="2017">2017年</option>
+						</select>
+						<select class="month">
+							<option value="1">1月</option>
+							<option value="2">2月</option>
+							<option value="3">3月</option>
+							<option value="4">4月</option>
+							<option value="5">5月</option>
+							<option value="6">6月</option>
+							<option value="7">7月</option>
+							<option value="8">8月</option>
+							<option value="9">9月</option>
+							<option value="10">10月</option>
+							<option value="11">11月</option>
+							<option value="12">12月</option>
+						</select>
+						&nbsp;
+						
+						<label>地区：</label>
+						<span class="area">
+							<select>
+								<option value="0">全部</option>
+								<?php foreach ($area as $v): ?>
+								<option value={$v.id}>{$v.name}</option>
+								<?php endforeach; ?>
+							</select>
+						</span>
+						
+						&nbsp;
+						<label>部门：</label>
+						<span class="depart">
+							<select>
+								
+							</select>
+						</span>
+						&nbsp;
+						<label>小组：</label>
+						<span class="team">
+							<select>
+								
+							</select>
+						</span>
+						&nbsp;
+
+						<div class="search btn-group">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Search for...">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">搜索</button>
+								</span>
+							</div><!-- /input-group -->
+						</div>
+
+						<button class="submit btn btn-default">提交</button>
+
+					</td>
+					
+				</tr>
+				
+			</tbody>
+		</table>
+	</div>
+
+	<form id="score-f" action="{:U('score/score_handler')}" method="post">
+		<div class="score table-responsive">	
+			<table class="t-body table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th width="11%">姓名</th>
+						<th width="11%">施工（5）</th>
+						<th width="11%">设计/意向（4）</th>
+						<th width="11%">定金（3）</th>
+						<th width="11%">VIP卡（2.5）</th>
+						<th width="11%">二访（2）</th>
+						<th width="11%">一访（1）</th>
+						<th width="11%">退单（-5）</th>
+						<th width="11%">总积分</th>
+					</tr>
+				</thead>
+				
+					<tbody class="scorelist">
+						
+					</tbody>
+				
+			</table>
+		</div>
+	</form>
+	
+
+
+
+<include file="public/footer"/>
+
+

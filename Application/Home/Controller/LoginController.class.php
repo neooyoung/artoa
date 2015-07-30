@@ -25,7 +25,22 @@ class LoginController extends Controller {
 
     public function signup()
     {
+        $this->area = M("depart")->where("pid=0")->select();
     	$this->display();
+    }
+
+    public function signup_ajax()
+    {
+         if (I("area")) 
+        {
+            $res = M("depart")->where("pid=".I("area"))->select();
+            $this->ajaxReturn($res);
+        }
+        else if(I("depart"))
+        {
+            $res = M("depart")->where("pid=".I("depart"))->select();
+            $this->ajaxReturn($res);
+        }
     }
 
     public function signup_handler()
@@ -59,10 +74,14 @@ class LoginController extends Controller {
                  $data = array(
                 "name" => I("name"),
                 "password" => md5(I("password")),
+                "admin" => 9,
+                "aid" => I("area"),
+                "did" => I("depart"),
+                "tid" => I("team"),
                 );
 
                 M("users")->add($data);
-                $this->redirect('index/index');
+                $this->success("申请成功", "index/index");
             }
         }
 

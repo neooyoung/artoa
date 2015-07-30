@@ -182,5 +182,39 @@
     <script src="/artoa/Public/js/bootstrap.min.js"></script>
     <script src="/artoa/Public/js/swiper.min.js"></script>
     <script src="/artoa/Public/js/common.js"></script>
+    <script>
+
+    	$(".area select").change(function(){
+				var aid = $(this).val();
+				$.post("<?php echo U('login/signup_ajax');?>", {area:aid}, function(data){
+					var str = ' ';
+					for (var i in data)
+					{
+						str += "<option value='"+data[i]['id']+"'>"+data[i]['name']+"</option>";
+					}
+
+					$(".depart select").html(str);
+					$(".depart select").change();
+				})
+			})
+
+			$(".depart select").change(function(){
+				var aid = $(this).val();
+				$.post("<?php echo U('login/signup_ajax');?>", {depart:aid}, function(data){
+					var str = ' ';
+					for (var i in data)
+					{
+						str += "<option value='"+data[i]['id']+"'>"+data[i]['name']+"</option>";
+					}
+
+					$(".team select").html(str);
+
+				})
+			})
+
+			$(".area select").change();
+
+	   
+    </script>
   </body>
 </html>

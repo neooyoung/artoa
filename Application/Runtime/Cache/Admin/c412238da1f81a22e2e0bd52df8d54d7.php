@@ -44,6 +44,9 @@
     <script src="/artoa/Public/js/admin.js"></script>
     <script type="text/javascript">
 	    $(function(){
+	    	$(".admin select").val(<?php echo ($user['admin']); ?>);
+	    	
+
 	    	$(".area select").change(function(){
 				var aid = $(this).val();
 				$.post("<?php echo U('user/add_user_ajax');?>", {area:aid}, function(data){
@@ -68,10 +71,17 @@
 					}
 
 					$(".team select").html(str);
+
+					// $(".area select").val(<?php echo ($user['aid']); ?>);
+			  //   	$(".depart select").val(<?php echo ($user['did']); ?>);
+			  //   	$(".depart select").val(<?php echo ($user['tid']); ?>);
+
 				})
 			})
 
 			$(".area select").change();
+
+			
 
 	    })
     </script>

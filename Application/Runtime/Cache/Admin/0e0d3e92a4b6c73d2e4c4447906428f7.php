@@ -49,18 +49,47 @@
 				</div>
 			</div>
 
-			<div class="form-group">
+			<div class="admin form-group">
 				<label class="col-sm-2 control-label">用户组：</label>
 				<div class="col-sm-3">
 					<select class="form-control" name="admin">
-					 <?php if ($admin == 2): ?>
-						<option value="0">普通员工</option>
-						<option value="1">管理员</option>
-						<option value="2">总管理员</option>
-					<?php else: ?>
-						<option value="0">普通员工</option>
-						<option value="1">管理员</option>
-					<?php endif; ?>
+						<?php if ($admin == 2): ?>
+							<option value="0">普通员工</option>
+							<option value="1">管理员</option>
+							<option value="2">总管理员</option>
+						<?php else: ?>
+							<option value="0">普通员工</option>
+							<option value="1">管理员</option>
+						<?php endif; ?>
+					</select>
+				</div>
+			</div>
+
+			<div class="area form-group">
+				<label class="col-sm-2 control-label">地区：</label>
+				<div class="col-sm-3">
+					<select class="form-control" name="area">
+						<?php foreach ($area as $v): ?>
+							<option value=<?php echo ($v["id"]); ?>><?php echo ($v["name"]); ?></option>
+						<?php endforeach; ?>
+					</select>
+				</div>
+			</div>
+
+			<div class="depart form-group">
+				<label class="col-sm-2 control-label">部门：</label>
+				<div class="col-sm-3">
+					<select class="form-control" name="depart">
+						
+					</select>
+				</div>
+			</div>
+
+			<div class="team form-group">
+				<label class="col-sm-2 control-label">小组：</label>
+				<div class="col-sm-3">
+					<select class="form-control" name="team">
+						
 					</select>
 				</div>
 			</div>
@@ -79,6 +108,8 @@
     <script src="/artoa/Public/js/admin.js"></script>
     <script type="text/javascript">
 	    $(function(){
+	    	$(".admin select").val(<?php echo ($user['admin']); ?>);
+
 	    	$(".area select").change(function(){
 				var aid = $(this).val();
 				$.post("<?php echo U('user/add_user_ajax');?>", {area:aid}, function(data){
@@ -103,12 +134,51 @@
 					}
 
 					$(".team select").html(str);
+
+					init()
+					// $(".area select").val(<?php echo ($user['aid']); ?>);
+			  //   	$(".depart select").val(<?php echo ($user['did']); ?>);
+			  //   	$(".depart select").val(<?php echo ($user['tid']); ?>);
+
 				})
 			})
+
+
+			$(".score select").change(function(){
+				var ye = $(".year").val();
+				var mon = $(".month").val();
+				var area = $(".area select").val();
+				var depart = $(".depart select").val();
+				var team = $(".team select").val();
+				$.post("<?php echo U('score/score_ajax');?>", {year:ye,month:mon,aid:area,did:depart,tid:team}, function(data){
+					var str = " ";
+					for (var i in data)
+					{
+						str += "<tr><td colspan='9' scope='row'>"+data[i]['name']+"<td></tr>"
+					}
+					$(".score .scorelist").html(str);
+				})
+			});
 
 			$(".area select").change();
 
 	    })
+
+	    var flag = 1;
+
+	    function init(){
+	    	if (flag == 1) 
+	    	{
+	    		$(".area select").val(<?php echo ($user['aid']); ?>);
+		    	$(".depart select").val(<?php echo ($user['did']); ?>);
+		    	$(".team select").val(<?php echo ($user['tid']); ?>);
+	    	};
+	    	flag = 0;
+	    }
+
+
+
+
     </script>
   </body>
 </html>

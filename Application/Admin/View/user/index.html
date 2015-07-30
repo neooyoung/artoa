@@ -15,8 +15,13 @@
 				<td>{$v.admin}</td>
 				<td>{$v.dateline}</td>
 				<td>
-				<a href="{:U('user/update_user', array('uid'=>$v['uid']))}">修改</a>
-				<a href="{:U('user/del_user', array('uid'=>$v['uid']))}">删除</a>
+				<?php if ($v['admin'] == 9): ?>
+					<a href="{:U('user/approve_user', array('uid'=>$v['uid']))}">同意申请</a>
+					<a href="{:U('user/deny_user', array('uid'=>$v['uid']))}">拒绝申请</a>
+				<?php else: ?>
+					<a href="{:U('user/update_user', array('uid'=>$v['uid']))}">修改</a>
+					<a href="{:U('user/del_user', array('uid'=>$v['uid']))}">删除</a>
+				<?php endif; ?>
 				</td>
 			</tr>
 		</foreach>

@@ -23,34 +23,108 @@
     
 
 
-	<table class="table table-hover">
-		<tr>
-		<th><a href="<?php echo U('depart/add_area');?>">添加地区</a></th>
-		</tr>
-		<?php foreach ($area as $v): ?>
-			<tr>
-				<th>
-					<?php echo ($v['name']); ?>
-					<a href="<?php echo U('depart/update_area', array('id'=>$v['id']));?>">[修改]</a>
-					<a href="<?php echo U('depart/del_area', array('id'=>$v['id']));?>">[删除]</a>
-					<a href="<?php echo U('depart/add_depart', array('id'=>$v['id']));?>">[添加部门]</a>
-				</th>
-			</tr>
-			<?php if ($v['child']): ?>
+
+
+	<div class="">
+		<table class="score t-nav table table-bordered">
+			<tbody>
 				<tr>
 					<td>
-						<?php foreach ($v['child'] as $val): ?>
-							<?php echo ($val["name"]); ?>
-							<a href="<?php echo U('depart/update_depart', array('id'=>$val['id']));?>">[修改]</a>
-							<a href="<?php echo U('depart/del_depart', array('id'=>$val['id']));?>">[删除]</a>
-							<a href="<?php echo U('depart/manage_team', array('pid'=>$val['id'], 'topid'=>$val['topid']));?>">[管理小组]</a>
-							&nbsp;
-						<?php endforeach; ?>
+						<label>日期：</label>
+						<select class="year">
+							<option value="2015">2015年</option>
+							<option value="2016">2016年</option>
+							<option value="2017">2017年</option>
+						</select>
+						<select class="month">
+							<option value="1">1月</option>
+							<option value="2">2月</option>
+							<option value="3">3月</option>
+							<option value="4">4月</option>
+							<option value="5">5月</option>
+							<option value="6">6月</option>
+							<option value="7">7月</option>
+							<option value="8">8月</option>
+							<option value="9">9月</option>
+							<option value="10">10月</option>
+							<option value="11">11月</option>
+							<option value="12">12月</option>
+						</select>
+						&nbsp;
+						
+						<label>地区：</label>
+						<span class="area">
+							<select>
+								<option value="0">全部</option>
+								<?php foreach ($area as $v): ?>
+								<option value=<?php echo ($v["id"]); ?>><?php echo ($v["name"]); ?></option>
+								<?php endforeach; ?>
+							</select>
+						</span>
+						
+						&nbsp;
+						<label>部门：</label>
+						<span class="depart">
+							<select>
+								
+							</select>
+						</span>
+						&nbsp;
+						<label>小组：</label>
+						<span class="team">
+							<select>
+								
+							</select>
+						</span>
+						&nbsp;
+
+						<div class="search btn-group">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Search for...">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button">搜索</button>
+								</span>
+							</div><!-- /input-group -->
+						</div>
+
+						<button class="submit btn btn-default">提交</button>
+
 					</td>
+					
 				</tr>
-			<?php endif; ?>
-		<?php endforeach; ?>
-	</table>
+				
+			</tbody>
+		</table>
+	</div>
+
+	<form id="score-f" action="<?php echo U('score/score_handler');?>" method="post">
+		<div class="score table-responsive">	
+			<table class="t-body table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th width="11%">姓名</th>
+						<th width="11%">施工（5）</th>
+						<th width="11%">设计/意向（4）</th>
+						<th width="11%">定金（3）</th>
+						<th width="11%">VIP卡（2.5）</th>
+						<th width="11%">二访（2）</th>
+						<th width="11%">一访（1）</th>
+						<th width="11%">退单（-5）</th>
+						<th width="11%">总积分</th>
+					</tr>
+				</thead>
+				
+					<tbody class="scorelist">
+						
+					</tbody>
+				
+			</table>
+		</div>
+	</form>
+	
+
+
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/artoa/Public/js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
